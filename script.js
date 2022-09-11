@@ -1,134 +1,43 @@
-let data = `[
-  {
-    "title": "Work",
-    "timeframes": {
-      "daily": {
-        "current": 5,
-        "previous": 7
-      },
-      "weekly": {
-        "current": 32,
-        "previous": 36
-      },
-      "monthly": {
-        "current": 103,
-        "previous": 128
-      }
-    }
-  },
-  {
-    "title": "Play",
-    "timeframes": {
-      "daily": {
-        "current": 1,
-        "previous": 2
-      },
-      "weekly": {
-        "current": 10,
-        "previous": 8
-      },
-      "monthly": {
-        "current": 23,
-        "previous": 29
-      }
-    }
-  },
-  {
-    "title": "Study",
-    "timeframes": {
-      "daily": {
-        "current": 0,
-        "previous": 1
-      },
-      "weekly": {
-        "current": 4,
-        "previous": 7
-      },
-      "monthly": {
-        "current": 13,
-        "previous": 19
-      }
-    }
-  },
-  {
-    "title": "Exercise",
-    "timeframes": {
-      "daily": {
-        "current": 1,
-        "previous": 1
-      },
-      "weekly": {
-        "current": 4,
-        "previous": 5
-      },
-      "monthly": {
-        "current": 11,
-        "previous": 18
-      }
-    }
-  },
-  {
-    "title": "Social",
-    "timeframes": {
-      "daily": {
-        "current": 1,
-        "previous": 3
-      },
-      "weekly": {
-        "current": 5,
-        "previous": 10
-      },
-      "monthly": {
-        "current": 21,
-        "previous": 23
-      }
-    }
-  },
-  {
-    "title": "Self Care",
-    "timeframes": {
-      "daily": {
-        "current": 0,
-        "previous": 1
-      },
-      "weekly": {
-        "current": 2,
-        "previous": 2
-      },
-      "monthly": {
-        "current": 7,
-        "previous": 11
-      }
-    }
+var requestURL = './data.json'
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+request.onload = function() {
+  dadosJs = request.response;}
+var dadosJs
+  
+
+
+const DayCurrent = () => {
+  for(let i = 0; i < dadosJs.length; i++) {
+    document.getElementsByClassName('timeCurrent')[i].innerHTML = dadosJs[i].timeframes.daily.current + 'hrs'
   }
-]`
-
-let dadosJs = JSON.parse(data)
-
-const dados = () => {
-dadosJs.forEach(info =>{
-
-})
-
+    document.querySelectorAll('.previous').forEach((element, index) => { 
+      element.innerHTML = `Last day -${dadosJs[index].timeframes.daily.previous}hrs`
+      
+      
+    });
+  
 }
 
-function weeklyCurrent(info){
-  document.querySelectorAll('.timeCurrent').innerHTML=info.timeframes.weekly.current
+ const WeeklyCurrent = () =>{
+  for(let i = 0; i < dadosJs.length; i++) {
+    document.getElementsByClassName('timeCurrent')[i].innerHTML = dadosJs[i].timeframes.weekly.current + 'hrs'
 }
-function weeklyPrevious(info){
-  console.log(info.timeframes.weekly.previous)
+ document.querySelectorAll('.previous').forEach((element,index) =>
+  element.innerHTML=`Last week - ${dadosJs[index].timeframes.weekly.previous}hrs`
+ )
 }
-//dadosJs.forEach(weeklyPrevious)
 
-//dadosJs.forEach(weeklyCurrent)
-
-
-
-
-
-
-
-
+const MonthlyCurrent = () =>{
+  for(let i = 0; i < dadosJs.length; i++) {
+    document.getElementsByClassName('timeCurrent')[i].innerHTML = dadosJs[i].timeframes.monthly.current + 'hrs'
+}
+  document.querySelectorAll('.previous').forEach((element,index)=>
+  element.innerHTML=`Last month - ${dadosJs[index].timeframes.monthly.previous}hrs`
+  )
+}
 
 
 
@@ -139,7 +48,9 @@ const changeInfoDay = () =>{
   day.classList.add('active')
   week.classList.remove('active')
   month.classList.remove('active')
- alert('day')
+ 
+  DayCurrent()
+
 }
 const changeInfoWeek= () =>{
   const day = document.getElementById('day')
@@ -149,7 +60,7 @@ const changeInfoWeek= () =>{
   week.classList.add('active')
   month.classList.remove('active')
   
-  dadosJs.forEach(weeklyCurrent)
+  WeeklyCurrent()
   
 }
 const changeInfoMonth= () =>{ 
@@ -159,6 +70,6 @@ const changeInfoMonth= () =>{
   day.classList.remove('active')
   week.classList.remove('active')
   month.classList.add('active')
-  alert('month')
+  MonthlyCurrent()
   
 }
