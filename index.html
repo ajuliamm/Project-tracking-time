@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
     <title>Time Tracking</title>
 </head>
 
@@ -24,13 +25,13 @@
             </div>
             <nav id="nav">
                 <ul>
-                    <li> <a id="day">Dayly</a></li>
-                    <li> <a id="week">Weekly</a></li>
-                    <li> <a id="month">Monthly</a></li>
+                    <li> <a onclick="changeInfoDay()" id="day">Dayly</a></li>
+                    <li> <a onclick="changeInfoWeek()" id="week">Weekly</a></li>
+                    <li> <a onclick="changeInfoMonth()" id="month">Monthly</a></li>
                 </ul>
             </nav>
         </header>
-        <main>
+        <main id="cards">
             <div class="card" id="work">
                 <div class="box-card">
                     <div>
@@ -38,7 +39,7 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>5hrs </p><!-- daily -->
+                        <p class="current-time">5hrs </p><!-- daily -->
                         <p id="previous">Last day - 7hrs </p><!-- daily -->
                     </div>
                 </div>
@@ -51,8 +52,8 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>1hrs </p><!-- daily -->
-                        <p id="previous">Last day - 2hrs </p><!-- daily -->
+                        <p class="timeCurrent">1hrs </p><!-- daily -->
+                        <p class="previous" id="previous">Last day - 2hrs </p><!-- daily -->
                     </div>
                 </div>
             </div>
@@ -64,7 +65,7 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>0hrs </p><!-- daily -->
+                        <p class="timeCurrent">0hrs </p><!-- daily -->
                         <p id="previous">Last day - 1hrs </p><!-- daily -->
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>1hrs </p><!-- daily -->
+                        <p class="timeCurrent">1hrs </p><!-- daily -->
                         <p id="previous">Last day - 1hrs </p><!-- daily -->
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>1hrs </p><!-- daily -->
+                        <p class="timeCurrent">1hrs </p><!-- daily -->
                         <p id="previous">Last day - 3hrs </p><!-- daily -->
                     </div>
                 </div>
@@ -103,7 +104,7 @@
                         <img src="./assets/icon-ellipsis_1.png">
                     </div>
                     <div class="box-time">
-                        <p>0hrs </p><!-- daily -->
+                        <p class="timeCurrent">0hrs </p><!-- daily -->
                         <p id="previous">Last day - 1hrs </p><!-- daily -->
                     </div>
                 </div>
